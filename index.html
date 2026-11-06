@@ -6,9 +6,85 @@
   <title>TheVine Homepage</title>
 </head>
 <body>
-  <h1>Welcome to the Vine</h1>
-  <p>Initializing the github to show commits on dev branch
+  <header class="mainHeader">
+    <div class="logo">The Vine</div>
+      <nav class="mainNav">
+            <a href="/index.html">Home</a>
+            <a href="/pages/discover.html">Discover</a>
+            <a href="/pages/read.html">Read</a>
+            <!-- <a href= # ">Profile</a>     Will revisit this addition-->
+       </nav>
+    </header>
 
-  </p>
+ <main class="mainContent">
+      <!-- <form action=""></form> -->
+         <section id="home" class="homeSection">
+            <h1>Welcome to The Vine</h1>
+            <p>A warm and inviting space designed to bring your faith journey into focus. 
+              Whether you are exploring the Bible for the first time or looking for a local community, you belong here.
+              We bring study tools, events, and Christian media together in one peaceful place.</p>
+            
+            <div class="blankSpace">
+              <!-- GSAP Scroll Trigger : fade in and up when the user scrolls  -->
+            </div>
+
+            <div class="blankSpace">
+                <!-- Media Grid: YouTube API  -->
+            </div>
+        </section>
+
+        <section id="discover" class="discoverSection">
+            <h2>Discover Your Community</h2>
+            <p>Faith grows in connection. Find local church events, gospel concerts,
+               and community support groups near you. Our platform helps you step out 
+               of isolation and into a supportive, faith based environment.</p>
+            
+            <div class="blankSpace">
+                <!-- AfriGIS Maps API: to show local churches and event locations -->
+            </div>
+
+            <h3>Upcoming Events</h3>
+            <p>Browse through upcoming gatherings and find a place to connect. 
+              From youth study groups to local church services, there is always
+              a seat for you.</p>
+            
+            <div class="blankSpace">
+                <!-- GSAP hover effects: perhaps interactive event cards or a carousel??? -->
+            </div>
+
+            <!-- Link to form page -->
+            <p>Have a question about a local group or want to share an event with us?</p>
+            <a href="getInTouch.html" class="ctaButton">Get in touch!</a>
+        </section>
+
+        <section id="read" class="readSection">
+            <h2>Scripture made simple</h2>
+            <p>Experience a distraction free Bible reader. Read clearly, take notes, 
+              and explore different translations in a peaceful interface that feels 
+              just like your physical study Bible.</p>
+            
+            <h3>Today's Reading: </h3>
+            
+            <!-- GSAP anim target -->
+            <div class="blankSpace">
+                <!-- GSAP page turn animation -->
+
+            </div>
+
+            <!-- API target -->
+            <div class="blankSpace">
+                <!--HelloAO Bible API-->
+
+            </div>
+            
+           <!-- Load/Error interface states for the failed or working API's  -->
+            <div></div>
+        </section>
+    < /main>
+
+    <footer class="mainFooter">
+      <p>The Vine | A Faith-based community and bible study platform.</p>
+      <p>Sisanda Gabela - Wits Digital Arts 2026</p>
+    </footer>
 </body>
 </html>

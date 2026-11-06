@@ -3,13 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact form</title>
+  <title>Contact form| Get in touch</title>
 </head>
 
 <!-- include form validation!! -->
 
 <body>
-  
-  <form>
+   <header class="mainHeader">
+     <div class="logo">The Vine</div>
+       <nav class="mainNav">
+          <a href="../index.html">Home</a>
+          <a href="../pages/discover.html">Discover</a>
+            <a href="../pages/read.html">Read</a>
+        </nav>
+    </header>
+    
+     <main class="mainContent">
+        <div class="formContainer">
+            <h2>Get in touch</h2>
+            <p>Have a question, want to share a local event, or just want to say hello? Send us a message and our community team will get back to you.</p>
+     <div id="successMessage" class="successMsg">Thank you. Your message has been sent successfully.</div>
+
+            <form id="contactForm" novalidate>
+                <div class="formGroup">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name">
+                    <div class="errorMessage" id="nameError">Please enter your name.</div>
+                </div>
+
+                <div class="formGroup">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com">
+                    <div class="errorMessage" id="emailError">Please enter a valid email address.</div>
+                </div>
+
+                <div class="formGroup">
+                    <label for="message">Meclass="errorMessagessage</label>
+                    <textarea id="message" name="message" rows="4" placeholder="How can we help?"></textarea>
+                    <div " id="messageError">Please enter a message.</div>
+                </div>
+
+                <button type="submit" class="submitButton">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="mainFooter">
+        <p>The Vine | Faith based community and study platform.</p>
+    </footer>       
 </body>
 </html>
