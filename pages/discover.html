@@ -19,14 +19,15 @@
      <main class="mainContent">
         <section class="discoverHero">
             <h1>Find Your Community</h1>
-            <p>Step into a space where faith grows in connection. Discover local gatherings, share your journey, and find support among believers near you. From quiet study groups to vibrant gospel events, your next meaningful connection is just around the corner.</p>
-        </section>
+            <p>Step into a space where faith grows in connection. 
+              Discover local gatherings, share your journey, and find support among believers near you. From quiet study groups to vibrant gospel events, your next meaningful connection is just around the corner.</p>
+            </section>
 
         <section class="mapSection">
             <h2>Churches and Communities Near You</h2>
             <p>Explore local churches, community centers, and support groups in your area. We believe that finding a physical place to belong is an important part of your spiritual journey.</p>
             
-            <!-- API TARGET FOR AFRIGIS -->
+            <!-- API TARGET FOR AFRIGIS maps api -->
             <div class="blankSpace">
                 [Maps API]
             </div>
@@ -53,20 +54,31 @@
               interviews, and recorded gospel events curated just for you.</p>
             
             <!-- API TARGET FOR YOUTUBE -->
-            <div class="blankSpace">
-                [YouTube Data API: Grid to show video thumbnails, titles, and links]
+            
+            <div id="youtubeMediaGrid" class="mediaGrid">
+
             </div>
+
+            <!-- Error state container -->
+            <div id="youtubeErrorState" class="errorState" style="display:none;">
+               <p>Sorry, we could not load the media right now. Please try again later.</p>
+            </div>
+
+            
+          <div id="videos"></div>
+
         </section>
 
         <section class="ctaSection">
             <h2>Want to share an event or have a question?</h2>
             <p>We would love to hear from you! Reach out to our team to submit a local event, ask for support, or just say hello.</p>
-            <a href="getInTouch.html" class="ctaButton">Get in touch</a>
+            <a href="../pages/contactForm.html" class="ctaButton">Get in touch</a>
         </section>
     </main>
 
     <footer class="mainFooter">
         <p>The Vine |A Faith-based community and Bible-study platform.</p>
-    </footer>
+        <p>Sisanda Gabela - Wits Digital Arts 2026</p>
+      </footer>
 </body>
 </html>
