@@ -2,13 +2,245 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"meta author="Sisanda Gabela" >
-  <title>TheVine Homepage</title>
-</head>
-<body>
-  <h1>Welcome to the Vine</h1>
-  <p>Initializing the github to show commits on dev branch
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Sisanda Gabela">
 
-  </p>
+  <title>The Vine | Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Newsreader:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="scripts/theme.js"></script>
+
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/theme.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <script src="scripts/config.js" defer></script>
+  <script src="scripts/globalApp.js" defer></script>
+  <script src="scripts/validation.js" defer></script>
+  <script src="scripts/homePage.js" defer></script>
+</head>
+
+<body>
+
+  <div id="pageLoader" class="pageLoader" aria-hidden="true">
+    <span class="loaderLabel">The Vine</span>
+  </div>
+
+  <header class="mainHeader">
+    <div class="logo">The Vine</div>
+
+    <nav class="mainNav" aria-label="Main navigation">
+      <a href="index.html" class="navLink" aria-current="page">Home</a>
+      <a href="pages/discover.html" class="navLink">Discover</a>
+      <a href="pages/read.html" class="navLink">Read</a>
+    </nav>
+
+    <div class="a11yControls">
+      <button id="themeToggle" class="a11yButton" type="button" aria-pressed="false">
+        Dark Mode
+      </button>
+
+      <button id="dyslexiaToggle" class="a11yButton" type="button" aria-pressed="false">
+        Dyslexia Text
+      </button>
+    </div>
+  </header>
+
+  <main class="mainContent">
+<section id="home" class="homeSection">
+
+  <div class="heroContent">
+
+    <h1>Welcome to The Vine</h1>
+
+    <p>
+      A warm and inviting space designed to bring your faith journey
+      into focus. Whether you are exploring the Bible for the first
+      time or looking for a local community, you belong here.
+    </p>
+
+    <div class="heroActions">
+
+      <a href="pages/read.html" class="ctaButton">Explore Scripture</a>
+      <a href="pages/discover.html" class="ctaButton"> Discover Community </a>
+    </div>
+  </div>
+
+  <div class="heroVisual">
+    <img src="/assets/hero.jpg"
+      alt="The cross of Jesus Christ with a red cloth">
+  </div>
+
+</section>
+
+    <section id="media" class="mediaSection">
+      <h2>Faith in everyday life</h2>
+      <p>
+        Explore Christian media, worship music, sermons and conversations
+        that encourage spiritual growth.
+      </p>
+
+      <a href="pages/discover.html#mediaSection" class="ctaButton">Explore Christian Media</a>
+    </section>
+
+    <section id="media" class="splitSection">
+
+  <div class="splitVisual">
+    <img src="assets/churchOnline.jpeg"
+         alt="Online church experience"
+         loading="lazy">
+  </div>
+
+  <div class="splitContent">
+    <p class="sectionLabel">Stay Connected</p>
+
+    <h2>Faith beyond Sunday.</h2>
+
+    <p>
+      Can't make it to church this Sunday?
+      Missed a sermon or simply seeking wisdom
+      through the Word?
+    </p>
+
+    <p>
+      Wherever you are, stay connected through
+      sermons, worship and faith-filled conversations.
+    </p>
+
+    <a href="pages/discover.html#mediaSection" class="ctaButton">
+      Explore Faith Online
+    </a>
+  </div>
+
+  
+
+</section>
+    <section id="discover" class="discoverSection">
+      <h2>Discover Your Community</h2>
+
+      <p>
+        Faith grows in connection. Find local church events, gospel concerts,
+        and community support groups near you. Our platform helps you step out
+        of isolation and into a supportive, faith based environment.
+      </p>
+
+      <a href="pages/discover.html#mapSection" class="ctaButton">Find a Church</a>
+
+     
+     
+      <h3>Upcoming Events</h3>
+
+      <p>
+        Browse through upcoming gatherings and find a place to connect.
+        From youth study groups to local church services, there is always
+        a seat for you.
+      </p>
+
+      <div id="eventGrid" class="eventGrid"></div>
+
+      <p>
+        Have a question about a local group or want to share an event with us?
+      </p>
+
+      <a href="#contact" class="ctaButton">Get in touch!</a>
+    </section>
+
+    <section id="read" class="readSection">
+      <h2>Scripture made simple</h2>
+
+      <p>
+        Experience a distraction free Bible reader. Read clearly, take notes,
+        and explore different translations in a peaceful interface that feels
+        just like your physical study Bible.
+      </p>
+
+      <div class="scripturePreview">
+        <h3>Today's Reading</h3>
+
+        <blockquote>
+          <p>
+            I am the vine, ye are the branches: He that abideth in me,
+            and I in him, the same bringeth forth much fruit:
+            for without me ye can do nothing.
+          </p>
+
+          <cite>John 15:5 (KJV)</cite>
+        </blockquote>
+      </div>
+
+      <a href="pages/read.html" class="ctaButton">Open Bible Reader</a>
+    </section>
+
+    <section id="contact" class="contactSection">
+      <h2>Get in touch</h2>
+
+      <p>
+        Share an event, ask a question or tell us how we can improve The Vine.
+      </p>
+
+      <form id="contactForm" class="contactForm" novalidate>
+
+        <div class="formGroup">
+          <label for="senderName">Full Name</label>
+
+          <input
+            type="text"
+            id="senderName"
+            name="senderName"
+            autocomplete="name"
+            aria-describedby="senderNameError"
+            required
+          >
+
+          <span id="senderNameError" class="formError"></span>
+        </div>
+
+        <div class="formGroup">
+          <label for="senderEmail">Email Address</label>
+
+          <input
+            type="email"
+            id="senderEmail"
+            name="senderEmail"
+            autocomplete="email"
+            aria-describedby="senderEmailError"
+            required
+          >
+
+          <span id="senderEmailError" class="formError"></span>
+        </div>
+
+        <div class="formGroup">
+          <label for="senderMessage">Message</label>
+
+          <textarea
+            id="senderMessage"
+            name="senderMessage"
+            rows="5"
+            aria-describedby="senderMessageError"
+            required
+          ></textarea>
+
+          <span id="senderMessageError" class="formError"></span>
+        </div>
+
+        <button id="submitBtn" class="ctaButton" type="submit">
+          Submit Message
+        </button>
+
+        <p id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="mainFooter">
+    <p>The Vine | A Faith-based community and bible study platform.</p>
+    <p>Sisanda Gabela - Wits Digital Arts 2026</p>
+  </footer>
+
 </body>
 </html>

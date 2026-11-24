@@ -1,0 +1,154 @@
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+  background: #0C0056;
+  color: #F2F2F2;
+}
+
+html[data-theme="dark"] .mainHeader,
+html[data-theme="dark"] .mainFooter {
+  background: #080039;
+}
+
+html[data-theme="dark"] .exploreFaith,
+html[data-theme="dark"] #media,
+html[data-theme="dark"] #discover,
+html[data-theme="dark"] #read,
+html[data-theme="dark"] .contactSection,
+html[data-theme="dark"] .ctaSection,
+html[data-theme="dark"] .notesSection,
+html[data-theme="dark"] .progressSection,
+html[data-theme="dark"] .profileSection,
+html[data-theme="dark"] .journeySection,
+html[data-theme="dark"] .profileSettings,
+html[data-theme="dark"] .mapSection,
+html[data-theme="dark"] .eventSection,
+html[data-theme="dark"] .mediaSection {
+  background: #21156B;
+  color: #F2F2F2;
+  border-color: #AE997B;
+}
+
+html[data-theme="dark"] .churchCard,
+html[data-theme="dark"] .eventCard,
+html[data-theme="dark"] .mediaCard,
+html[data-theme="dark"] .noteCard,
+html[data-theme="dark"] .bookmarkCard,
+html[data-theme="dark"] .loadingState,
+html[data-theme="dark"] .errorState,
+html[data-theme="dark"] .emptyState {
+  background: #302477;
+  color: #F2F2F2;
+  border-color: #AE997B;
+}
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] dialog {
+  background: #170D49;
+  color: #FFFFFF;
+  border-color: #AE997B;
+}
+
+html[data-theme="dark"] a {
+  color: #E1BB80;
+}
+
+html[data-theme="dark"] .logo,
+html[data-theme="dark"] .navLink {
+  color: #FFFFFF;
+}
+
+html[data-theme="dark"] .navLink:hover,
+html[data-theme="dark"] .navLink[aria-current="page"] {
+  color: #E1BB80;
+}
+
+html[data-theme="dark"] .ctaButton {
+  background: #E1BB80;
+  color: #0C0056;
+  border-color: #E1BB80;
+}
+
+html[data-theme="dark"] .ctaButton:hover {
+  background: #F2F2F2;
+  color: #0C0056;
+}
+
+html[data-theme="dark"] .faithCard .ctaButton {
+  background: #FFFFFF;
+  color: #71009A;
+  border-color: #FFFFFF;
+}
+
+html[data-theme="dark"] .faithCard .ctaButton:hover {
+  background: #71009A;
+  color: #FFFFFF;
+}
+
+html[data-theme="dark"] .bibleContainer {
+  background: #080039;
+}
+
+html[data-theme="dark"] .bookPageLeft {
+  background: linear-gradient(to right, #211B36 94%, #120D25);
+  color: #F2F2F2;
+}
+
+html[data-theme="dark"] .bookPageRight {
+  background: linear-gradient(to left, #211B36 94%, #120D25);
+  color: #F2F2F2;
+}
+
+html[data-theme="dark"] .verseNumber {
+  color: #E1BB80;
+}
+
+html[data-theme="dark"] .fieldError,
+html[data-theme="dark"] .formError {
+  color: #FFB4AB;
+}
+
+html[data-theme="dark"] :focus-visible {
+  outline-color: #E1BB80;
+}
+
+html[data-theme="dark"] .leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85);
+}
+
+html[data-dyslexia="true"] body,
+html[data-dyslexia="true"] h1,
+html[data-dyslexia="true"] h2,
+html[data-dyslexia="true"] h3,
+html[data-dyslexia="true"] .logo,
+html[data-dyslexia="true"] .bookPage,
+html[data-dyslexia="true"] .mainNav,
+html[data-dyslexia="true"] .ctaButton,
+html[data-dyslexia="true"] button,
+html[data-dyslexia="true"] input,
+html[data-dyslexia="true"] select,
+html[data-dyslexia="true"] textarea,
+html[data-dyslexia="true"] label {
+  font-family: "Atkinson Hyperlegible", Verdana, sans-serif;
+  letter-spacing: 0.04em;
+  word-spacing: 0.12em;
+  line-height: 1.85;
+}
+
+html[data-dyslexia="true"] body {
+  font-size: 16px;
+}
+
+html[data-dyslexia="true"] .bookPage {
+  font-size: 17px;
+}
+
+@media (max-width: 768px) {
+  html[data-theme="dark"] .bookPage {
+    background: #211B36;
+  }
+}
