@@ -3,12 +3,14 @@ let churchMarkers;
 
 async function fetchChurches(latitude, longitude) {
   const query = `
-    [out:json][timeout:25];
-    nwr
-      ["amenity"="place_of_worship"]
-      ["religion"="christian"]
-      (around:5000,${latitude},${longitude});
+    [out:json][timeout:30];
+    
+    nwr["amenity"="place_of_worship"]
+       ["name"~"Rhema|3C|Grace Bible Church|Hope Restoration Church|Hillsong Song|Rivers Church|Walked on water Ministries|ENC|CRC|Christian Revival",i]
+       (-26.35,27.75,-25.65,28.45);
+
     out center;
+
   `;
 
   const response = await fetch(overpassUrl, {
@@ -17,7 +19,7 @@ async function fetchChurches(latitude, longitude) {
   });
 
   if (!response.ok) {
-    throw new Error("Church directory request failed.");
+    throw new Error(`Church directory request failed: ${response.status}`);
   }
 
   const data = await response.json();
@@ -50,8 +52,11 @@ function initialiseMap(latitude, longitude) {
     churchMarkers = L.layerGroup().addTo(churchMap);
   }
 
-  churchMap.setView([latitude, longitude], defaultLocation.zoom);
-  churchMap.invalidateSize();
+  churchMap.setView(
+    [latitude, longitude], 
+    defaultLocation.zoom
+  );
+     churchMap.invalidateSize();
 }
 
 function renderChurches(churches) {
@@ -65,6 +70,7 @@ function renderChurches(churches) {
       church.latitude,
       church.longitude
     ]).addTo(churchMarkers);
+
 
     const popup = document.createElement("div");
 
@@ -104,4 +110,17 @@ function renderChurches(churches) {
     card.append(title, description, button);
     churchList.appendChild(card);
   });
+     if (churches.length > 0) {
+        const bounds = L.latLngBounds(
+            churches.map(church => [
+                church.latitude,
+                church.longitude
+            ])
+        );
+
+        churchMap.fitBounds(bounds, {
+            padding: [40, 40],
+            maxZoom: 15
+        });
+    }
 }

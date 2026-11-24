@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Sisanda Gabela">
 
-  <title>The Vine | Home</title>
+  <title>The Vine|Home </title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Newsreader:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=DM+Sans:wght@400;500;600;700&family=Lora:wght@400;500;600&family=Newsreader:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="scripts/theme.js"></script>
 
   <link rel="stylesheet" href="styles/styles.css">
@@ -17,6 +17,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js" defer></script>
 
   <script src="scripts/config.js" defer></script>
   <script src="scripts/globalApp.js" defer></script>
@@ -31,8 +32,9 @@
   </div>
 
   <header class="mainHeader">
-    <div class="logo">The Vine</div>
-
+    <a href="index.html" class="logo">
+    <img src="assets/vines.png" alt="The Vine">The Vine </a>
+   
     <nav class="mainNav" aria-label="Main navigation">
       <a href="index.html" class="navLink" aria-current="page">Home</a>
       <a href="pages/discover.html" class="navLink">Discover</a>
@@ -44,19 +46,17 @@
         Dark Mode
       </button>
 
-      <button id="dyslexiaToggle" class="a11yButton" type="button" aria-pressed="false">
-        Dyslexia Text
+      <button id="dyslexiaToggle" class="a11yButton" type="button" aria-pressed="false"> Dyslexia Text
       </button>
     </div>
   </header>
 
-  <main class="mainContent">
+  <main class="mainContent homeContent">
 <section id="home" class="homeSection">
 
   <div class="heroContent">
 
     <h1>Welcome to The Vine</h1>
-
     <p>
       A warm and inviting space designed to bring your faith journey
       into focus. Whether you are exploring the Bible for the first
@@ -71,24 +71,13 @@
   </div>
 
   <div class="heroVisual">
-    <img src="/assets/hero.jpg"
+    <img src="/assets/hero.jpeg"
       alt="The cross of Jesus Christ with a red cloth">
   </div>
 
 </section>
 
-    <section id="media" class="mediaSection">
-      <h2>Faith in everyday life</h2>
-      <p>
-        Explore Christian media, worship music, sermons and conversations
-        that encourage spiritual growth.
-      </p>
-
-      <a href="pages/discover.html#mediaSection" class="ctaButton">Explore Christian Media</a>
-    </section>
-
-    <section id="media" class="splitSection">
-
+<section id="media" class="splitSection">
   <div class="splitVisual">
     <img src="assets/churchOnline.jpeg"
          alt="Online church experience"
@@ -99,12 +88,11 @@
     <p class="sectionLabel">Stay Connected</p>
 
     <h2>Faith beyond Sunday.</h2>
-
-    <p>
+    <h3>
       Can't make it to church this Sunday?
       Missed a sermon or simply seeking wisdom
       through the Word?
-    </p>
+    </h3>
 
     <p>
       Wherever you are, stay connected through
@@ -116,64 +104,96 @@
     </a>
   </div>
 
-  
+</section>
+
+<section id="discover" class="splitSection reverseSection">
+
+    <div class="splitVisual">
+        <img src="assets/community.jpeg"
+             alt="Christian community"
+             loading="lazy">
+    </div>
+
+    <div class="splitContent">
+   ></p>
+
+        <h2>Discover Your Community</h2>
+
+        <p>
+            Faith grows in connection. Find opportunities
+            to worship, build friendships and grow within
+            a supportive, faith-based community.
+        </p>
+
+        <a href="pages/discover.html#mapSection" class="ctaButton">
+            Find a Church
+        </a>
+    </div>
 
 </section>
-    <section id="discover" class="discoverSection">
-      <h2>Discover Your Community</h2>
 
-      <p>
-        Faith grows in connection. Find local church events, gospel concerts,
-        and community support groups near you. Our platform helps you step out
-        of isolation and into a supportive, faith based environment.
-      </p>
+<section id="events" class="splitSection">
 
-      <a href="pages/discover.html#mapSection" class="ctaButton">Find a Church</a>
+    <div class="splitVisual">
+        <img src="assets/events.jpeg"
+             alt="Church gathering"
+             loading="lazy">
+    </div>
 
-     
-     
-      <h3>Upcoming Events</h3>
+    <div class="splitContent">
 
-      <p>
-        Browse through upcoming gatherings and find a place to connect.
-        From youth study groups to local church services, there is always
-        a seat for you.
-      </p>
+        <h2>Upcoming Gatherings</h2>
+        <p>
+            Explore opportunities to connect through
+            worship services, Bible study, youth gatherings
+            and community outreach.
+        </p>
 
-      <div id="eventGrid" class="eventGrid"></div>
+        <a href="pages/discover.html#eventSection" class="ctaButton">
+            Explore Gatherings
+        </a>
+    </div>
 
-      <p>
-        Have a question about a local group or want to share an event with us?
-      </p>
+</section>
 
-      <a href="#contact" class="ctaButton">Get in touch!</a>
-    </section>
+<section id="read" class="splitSection reverseSection">
 
-    <section id="read" class="readSection">
-      <h2>Scripture made simple</h2>
+    <div class="splitVisual">
+        <img src="assets/bible.jpeg"
+             alt="An open Bible"
+             loading="lazy">
+    </div>
 
-      <p>
-        Experience a distraction free Bible reader. Read clearly, take notes,
-        and explore different translations in a peaceful interface that feels
-        just like your physical study Bible.
-      </p>
+    <div class="splitContent">
+       
+        <h2>Scripture made simple</h2>
+        <p>
+            Experience a distraction-free Bible reader.
+            Explore Psalms and Proverbs in a peaceful
+            interface inspired by your physical study Bible.
+        </p>
 
-      <div class="scripturePreview">
-        <h3>Today's Reading</h3>
+        <div class="scripturePreview">
+            <h3>A Moment of Scripture</h3>
 
-        <blockquote>
-          <p>
-            I am the vine, ye are the branches: He that abideth in me,
-            and I in him, the same bringeth forth much fruit:
-            for without me ye can do nothing.
-          </p>
+            <blockquote>
+                <p>
+                    I am the vine, ye are the branches:
+                    He that abideth in me, and I in him,
+                    the same bringeth forth much fruit:
+                    for without me ye can do nothing.
+                </p>
 
-          <cite>John 15:5 (KJV)</cite>
-        </blockquote>
-      </div>
+                <cite>John 15:5 (KJV)</cite>
+            </blockquote>
+        </div>
 
-      <a href="pages/read.html" class="ctaButton">Open Bible Reader</a>
-    </section>
+        <a href="pages/read.html" class="ctaButton">
+            Open Bible Reader
+        </a>
+        </div>
+      </section>
+
 
     <section id="contact" class="contactSection">
       <h2>Get in touch</h2>

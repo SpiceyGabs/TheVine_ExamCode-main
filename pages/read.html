@@ -30,8 +30,9 @@
   </div>
 
   <header class="mainHeader">
-    <div class="logo">The Vine</div>
-
+    <a href="../index.html" class="logo">
+    <img src="../assets/vines.png" alt="The Vine">The Vine </a>
+    
     <nav class="mainNav" aria-label="Main navigation">
       <a href="../index.html" class="navLink">Home</a>
       <a href="discover.html" class="navLink">Discover</a>
@@ -56,7 +57,7 @@
 
       <p>
         Take a moment to slow down, reflect and reconnect with Scripture.
-        Explore the Bible at your own pace, discover different translations
+        Explore the Bible at your own pace,finding comfort in Psalms and wisdom in Proverbs,
         and make space for personal reflection.
       </p>
 
@@ -74,43 +75,33 @@
     <section id="scriptureSection" class="scriptureSection" data-state="loading">
 
       <h2>Bible Reader</h2>
-
       <p>
-        Choose your preferred translation, book and chapter to begin
-        your reading session.
+      Explore Psalms and Proverbs in the Berean Standard Bible.
+      Choose a book and chapter to begin your reading session.
       </p>
 
-      <div class="readerControls">
+        <div class="readerControls">
 
-        <div class="formGroup">
-          <label for="translationSelect">Translation</label>
+    <div class="formGroup">
+        <label for="bookSelect">Book</label>
 
-          <select id="translationSelect" disabled>
-            <option value="">Loading translations...</option>
-          </select>
-        </div>
+        <select id="bookSelect">
+            <option value="PSA">Psalms</option>
+            <option value="PRO">Proverbs</option>
+        </select>
+    </div>
 
-        <div class="formGroup">
-          <label for="bookSelect">Book</label>
+    <div class="formGroup">
+        <label for="chapterSelect">Chapter</label>
 
-          <select id="bookSelect" disabled>
-            <option value="">Select a book</option>
-          </select>
-        </div>
+        <select id="chapterSelect"></select>
+    </div>
 
-        <div class="formGroup">
-          <label for="chapterSelect">Chapter</label>
+    <button id="refreshScriptureBtn" class="ctaButton" type="button">
+        Refresh Scripture
+    </button>
 
-          <select id="chapterSelect" disabled>
-            <option value="">Select a chapter</option>
-          </select>
-        </div>
-
-        <button id="refreshScriptureBtn" class="ctaButton" type="button">
-          Refresh Scripture
-        </button>
-
-      </div>
+</div>
 
       <p id="readerStatus" role="status" aria-live="polite"></p>
 
@@ -150,18 +141,6 @@
 
         </div>
 
-        <div class="readingActions">
-
-          <button id="bookmarkBtn" class="ctaButton" type="button">
-            Bookmark Chapter
-          </button>
-
-          <button id="markReadBtn" class="ctaButton" type="button">
-            Mark as Read
-          </button>
-        </div>
-      </div>
-
       <div data-view="error" class="errorState" hidden>
 
         <h3>Unable to load Scripture</h3>
@@ -182,73 +161,13 @@
 
         <p>
           No verses were returned for this selection.
-          Please try another chapter or translation.
+          Please try another chapter.
         </p>
 
       </div>
 
     </section>
 
-    <section id="notesSection" class="notesSection">
-
-      <h2>Personal Study Notes</h2>
-
-      <p>
-        Reflect on what you have read. Record your thoughts, questions,
-        prayers and favourite passages.
-      </p>
-
-      <form id="notesForm">
-
-        <div class="formGroup">
-
-          <label for="noteTitle">Note Title</label>
-
-          <input
-            type="text"
-            id="noteTitle"
-            name="noteTitle"
-            placeholder="Give your reflection a title"
-            required
-          >
-
-        </div>
-
-        <div class="formGroup">
-
-          <label for="personalNotes">Your Reflection</label>
-
-          <textarea
-            id="personalNotes"
-            name="personalNotes"
-            rows="8"
-            placeholder="What stood out to you today?"
-            required
-          ></textarea>
-
-        </div>
-
-        <button id="saveNoteBtn" class="ctaButton" type="submit">
-          Save Note
-        </button>
-
-        <button id="clearNoteBtn" class="ctaButton" type="button">
-          Clear
-        </button>
-
-        <p id="notesStatus" role="status" aria-live="polite"></p>
-
-      </form>
-
-      <h3>Saved Reflections</h3>
-
-      <div id="savedNotes" class="savedNotes"></div>
-
-      <p id="emptyNotes">
-        You haven't saved any reflections yet.
-      </p>
-
-    </section>
 
     <section id="progressSection" class="progressSection">
 
@@ -259,26 +178,7 @@
         Keep track of your reading journey.
       </p>
 
-      <div class="readingProgress">
-
-        <label for="readingProgressBar">Chapters Read</label>
-
-        <progress id="readingProgressBar" value="0" max="1189">
-          0
-        </progress>
-
-        <p id="readingProgressText">0 chapters completed</p>
-
-      </div>
-
-      <h3>Your Bookmarks</h3>
-
-      <div id="bookmarkList" class="bookmarkList"></div>
-
-      <p id="emptyBookmarks">
-        Your bookmarked chapters will appear here.
-      </p>
-
+    
     </section>
 
     <section class="ctaSection">

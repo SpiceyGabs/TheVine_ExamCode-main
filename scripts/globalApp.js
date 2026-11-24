@@ -63,3 +63,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Shared Card Expansion
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (!window.gsap || !window.ScrollTrigger) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray(
+        ".eventEmptyState, .scripturePreview, .ctaSection"
+    ).forEach(function (card) {
+
+        gsap.from(card, {
+            scale: 0.9,
+            opacity: 0.3,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+                once: true
+            }
+        });
+
+    });
+
+});

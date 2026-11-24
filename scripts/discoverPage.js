@@ -1,110 +1,108 @@
+document.addEventListener("DOMContentLoaded", async function () {
+    const mapSection = document.getElementById("mapSection");
+    const mapStatus = document.getElementById("mapStatus");
+
+    setSectionState(mapSection, "success");
+
+    initialiseMap(
+        defaultLocation.latitude,
+        defaultLocation.longitude
+    );
+
+    try {
+        mapStatus.textContent = "Finding churches...";
+
+        const churches = await fetchChurches(
+            defaultLocation.latitude,
+            defaultLocation.longitude
+        );
+
+        renderChurches(churches);
+
+        mapStatus.textContent = churches.length
+            ? `${churches.length} churches found.`
+            : "No churches found.";
+
+    } catch (error) {
+        console.error(error);
+        mapStatus.textContent = "Church locations are currently unavailable.";
+    }
+});
 document.addEventListener("DOMContentLoaded", function () {
-//   const mapSection = document.getElementById("mapSection");
-//   const mapStatus = document.getElementById("mapStatus");
+    const section = document.getElementById("mediaSection");
+    const filter = document.getElementById("mediaFilter");
+    const status = document.getElementById("mediaStatus");
+    const refresh = document.getElementById("refreshMediaBtn");
+    const retry = document.getElementById("retryMediaBtn");
 
-//   const locationBtn = document.getElementById("locationBtn");
-//   const refreshMapBtn = document.getElementById("refreshMapBtn");
-//   const retryMapBtn = document.getElementById("retryMapBtn");
+    async function loadMedia() {
+        if (filter.disabled) return;
 
-//   if (!mapSection) return;
+        setSectionState(section, "loading");
 
-//   let latitude = defaultLocation.latitude;
-//   let longitude = defaultLocation.longitude;
-//   let isLoading = false;
+        filter.disabled = true;
+        refresh.disabled = true;
+        status.textContent = "Finding videos...";
 
-//   async function loadChurches() {
-//     if (isLoading) return;
+        try {
+            const videos = await fetchVideos(filter.value);
 
-//     isLoading = true;
+            if (!videos.length) {
+                setSectionState(section, "empty");
+                status.textContent = "No videos found.";
+                return;
+            }
 
-//     setSectionState(mapSection, "loading");
+            renderVideos(videos);
 
-//     mapStatus.textContent = "Searching for churches...";
+    setSectionState(section, "success");
+       status.textContent = `${videos.length} videos found.`;
+          if (window.gsap &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 
-//     refreshMapBtn.disabled = true;
-//     locationBtn.disabled = true;
+    gsap.from(".mediaCard", {
+        scale: 0.85,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.15,
+        ease: "power2.out",
+        clearProps: "transform,opacity"
+    });
+}
 
-//     try {
-//       const churches = await fetchChurches(latitude, longitude);
+        } catch (error) {
+            console.error(error);
 
-//       if (churches.length === 0) {
-//         setSectionState(mapSection, "empty");
+            setSectionState(section, "error");
+            status.textContent = "Unable to load videos.";
 
-//         mapStatus.textContent = "No churches found in this area.";
+        } finally {
+            filter.disabled = false;
+            refresh.disabled = false;
+        }
+    }
 
-//         return;
-//       }
+    filter.addEventListener("change", loadMedia);
+    refresh.addEventListener("click", loadMedia);
+    retry.addEventListener("click", loadMedia);
 
-//       setSectionState(mapSection, "success");
-//       initialiseMap(latitude, longitude);
-//       renderChurches(churches);
+    loadMedia();
+});
+// Upcoming Gatherings
 
-//       requestAnimationFrame(function () {
-//         churchMap.invalidateSize();
-//       });
+document.addEventListener("DOMContentLoaded", function () {
+    const eventFilter = document.getElementById("eventFilter");
+    const eventStatus = document.getElementById("eventStatus");
 
-//       mapStatus.textContent = `${churches.length} churches found.`;
+    const eventMessages = {
+        all: "No upcoming events listed in your area.",
+        worship: "No upcoming worship services listed in your area.",
+        bibleStudy: "No upcoming Bible study gatherings listed in your area.",
+        youth: "No upcoming youth gatherings listed in your area.",
+        outreach: "No upcoming outreach events listed in your area."
+    };
 
-//     } catch (error) {
-//       console.error(error);
-
-//       setSectionState(mapSection, "error");
-
-//       mapStatus.textContent = "Unable to load churches. Please try again.";
-
-//     } finally {
-//       isLoading = false;
-
-//       refreshMapBtn.disabled = false;
-//       locationBtn.disabled = false;
-//     }
-//   }
-
-//   refreshMapBtn.addEventListener("click", loadChurches);
-//   retryMapBtn.addEventListener("click", loadChurches);
-//   locationBtn.addEventListener("click", function () {
-//     if (!navigator.geolocation) {
-//       mapStatus.textContent = "Location services are unavailable.";
-//       return;
-//     }
-
-//     locationBtn.disabled = true;
-//     mapStatus.textContent = "Finding your location...";
-
-//     navigator.geolocation.getCurrentPosition(
-//       function (position) {
-//         latitude = position.coords.latitude;
-//         longitude = position.coords.longitude;
-
-//         locationBtn.disabled = false;
-//         loadChurches();
-//       },
-
-//       function () {
-//         locationBtn.disabled = false;
-
-//         mapStatus.textContent =
-//           "Location unavailable. You can continue using the default area.";
-//       },
-
-//       {
-//         enableHighAccuracy: false,
-//         timeout: 10000
-//       }
-//     );
-//   });
-
-//   loadChurches();
-// });
-
-// TEST
-//document.addEventListener("DOMContentLoaded", function () {
-  const mapSection = document.getElementById("mapSection");
-
-  setSectionState(mapSection, "success");
-
-  initialiseMap(
-    defaultLocation.latitude,
-    defaultLocation.longitude
-  );
+    eventFilter.addEventListener("change", function () {
+        eventStatus.textContent = eventMessages[eventFilter.value];
+    });
 });
