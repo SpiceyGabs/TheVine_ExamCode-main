@@ -9,12 +9,13 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  
   <script src="../scripts/theme.js"></script>
 
   <link rel="stylesheet" href="../styles/styles.css">
   <link rel="stylesheet" href="../styles/theme.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
   <script src="../scripts/config.js" defer></script>
   <script src="../scripts/globalApp.js" defer></script>
@@ -30,7 +31,8 @@
   </div>
 
   <header class="mainHeader">
-    <div class="logo">The Vine</div>
+    <a href="../index.html" class="logo">
+    <img src="../assets/vines.png" alt="The Vine">The Vine </a>
 
     <nav class="mainNav" aria-label="Main navigation">
       <a href="../index.html" class="navLink">Home</a>
@@ -52,10 +54,17 @@
   <main class="mainContent">
 
     <section class="discoverHero">
+      <div class="discoverVisual">
+    <img src="../assets/liveservice.jpeg"
+         alt="A congregation gathered for worship">
+</div>
       <h1>Find Your Community</h1>
 
       <p>
-        Step into a space where faith grows in connection.
+      Step into a space where faith grows in connection. Explore selected Christian churches across Gauteng.
+      Select a church to explore its location on the map.
+      </p>
+      <p>
       Discover local gatherings, share your journey, and find support
       among believers near you. From quiet study groups to vibrant
       gospel events, your next meaningful connection is just around
@@ -119,8 +128,8 @@
         or a community outreach program, there is always a seat for you.
       </p>
 
-      <div class="sectionControls">
-        <label for="eventFilter">Filter Events</label>
+     <div class="formGroup">
+        <label for="eventFilter">Event Category</label>
 
         <select id="eventFilter">
           <option value="all">All Events</option>
@@ -132,6 +141,12 @@
       </div>
 
       <div id="eventGrid" class="eventGrid"></div>
+         <div class="eventEmptyState">
+            <h3>No Upcoming Gatherings</h3>
+            <p id="eventStatus" role="status" aria-live="polite">
+                No upcoming events in your area.
+            </p>
+        </div>
 
       <p id="eventStatus" role="status" aria-live="polite"></p>
     </section>

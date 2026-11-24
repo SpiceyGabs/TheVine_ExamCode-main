@@ -152,3 +152,18 @@ html[data-dyslexia="true"] .bookPage {
     background: #211B36;
   }
 }
+
+html[data-theme="dark"] .eventEmptyState {
+    background:#f2f2f2;
+    color: #17113B;
+    border-color: #AE997B;
+}
+html[data-theme="dark"] .eventSection {
+    background: #17113B;
+    color: #F2F2F2;
+}
+
+html[data-theme="dark"] .eventEmptyState {
+    background: #71009A;
+    color: #F2F2F2;
+}
