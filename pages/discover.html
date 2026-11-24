@@ -3,82 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discover Page|Events, Resources and community content</title>
+
+  <title>The Vine | Discover</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  
+  <script src="../scripts/theme.js"></script>
+
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../styles/theme.css">
+
+
+  <script src="../scripts/config.js" defer></script>
+  <script src="../scripts/globalApp.js" defer></script>
+  <script src="../scripts/churchMap.js" defer></script>
+  <script src="../scripts/youtubeApi.js" defer></script>
+  <script src="../scripts/discoverPage.js" defer></script>
 </head>
 
 <body>
+
+  <div id="pageLoader" class="pageLoader" aria-hidden="true">
+    <span class="loaderLabel">The Vine</span>
+  </div>
+
   <header class="mainHeader">
-     <div class="logo">The Vine</div>
-       <nav class="mainNav">
-          <a href="../index.html">Home</a>
-          <a href="../pages/discover.html">Discover</a>
-            <a href="../pages/read.html">Read</a>
-        </nav>
-    </header>
+    <div class="logo">The Vine</div>
 
-     <main class="mainContent">
-        <section class="discoverHero">
-            <h1>Find Your Community</h1>
-            <p>Step into a space where faith grows in connection. 
-              Discover local gatherings, share your journey, and find support among believers near you. From quiet study groups to vibrant gospel events, your next meaningful connection is just around the corner.</p>
-            </section>
+    <nav class="mainNav" aria-label="Main navigation">
+      <a href="../index.html" class="navLink">Home</a>
+      <a href="discover.html" class="navLink" aria-current="page">Discover</a>
+      <a href="read.html" class="navLink">Read</a>
+    </nav>
 
-        <section class="mapSection">
-            <h2>Churches and Communities Near You</h2>
-            <p>Explore local churches, community centers, and support groups in your area. We believe that finding a physical place to belong is an important part of your spiritual journey.</p>
-            
-            <!-- API TARGET FOR AFRIGIS maps api -->
-            <div class="blankSpace">
-                [Maps API]
-            </div>
-        </section>
+    <div class="a11yControls">
+      <button id="themeToggle" class="a11yButton" type="button" aria-pressed="false">
+        Dark Mode
+      </button>
 
-        <section class="eventSection">
-            <h2>Upcoming Gatherings</h2>
-            <p>Browse through upcoming events and find a place to connect. Whether you are 
-              looking for a youth meetup, a worship night, or a community outreach program, 
-              there is always a seat for you.</p>
-            
-            <!-- API TARGET FOR EVENTS & GSAP HOVER -->
-            <div class="blankSpace">
-                [Event Listings: Dynamically loaded event cards]
-            </div>
-            <div class="blankSpace">
-                [GSAP Hover Animation: Target the event cards-smooth scale and opacity feedback on hover]
-            </div>
-        </section>
+      <button id="dyslexiaToggle" class="a11yButton" type="button" aria-pressed="false">
+        Dyslexia Text
+      </button>
+    </div>
+  </header>
 
-        <section class="mediaSection">
-            <h2>Christian Media and Inspiration</h2>
-            <p>Feed your spirit with uplifting content. Discover Christian music, sermons, 
-              interviews, and recorded gospel events curated just for you.</p>
-            
-            <!-- API TARGET FOR YOUTUBE -->
-            
-            <div id="youtubeMediaGrid" class="mediaGrid">
+  <main class="mainContent">
 
-            </div>
+    <section class="discoverHero">
+      <h1>Find Your Community</h1>
 
-            <!-- Error state container -->
-            <div id="youtubeErrorState" class="errorState" style="display:none;">
-               <p>Sorry, we could not load the media right now. Please try again later.</p>
-            </div>
+      <p>
+        Step into a space where faith grows in connection.
+      Discover local gatherings, share your journey, and find support
+      among believers near you. From quiet study groups to vibrant
+      gospel events, your next meaningful connection is just around
+      the corner.
+      </p>
 
-            
-          <div id="videos"></div>
+      <div class="heroActions">
+        <a href="#mapSection" class="ctaButton">Find a Church</a>
+        <a href="#eventSection" class="ctaButton">Explore Events</a>
+        <a href="#mediaSection" class="ctaButton">Explore Media</a>
+      </div>
+    </section>
 
-        </section>
+    <section id="mapSection" class="mapSection" data-state="loading">
+       <h2>Church Directory</h2>
+           <p>Discover churches in your surrounding area.</p>
 
-        <section class="ctaSection">
-            <h2>Want to share an event or have a question?</h2>
-            <p>We would love to hear from you! Reach out to our team to submit a local event, ask for support, or just say hello.</p>
-            <a href="../pages/contactForm.html" class="ctaButton">Get in touch</a>
-        </section>
-    </main>
+      <div class="sectionControls">
+    <button id="locationBtn" class="ctaButton" type="button">
+      Use My Location
+    </button>
 
-    <footer class="mainFooter">
-        <p>The Vine |A Faith-based community and Bible-study platform.</p>
-        <p>Sisanda Gabela - Wits Digital Arts 2026</p>
-      </footer>
+          <button id="refreshMapBtn" class="ctaButton" type="button">Refresh Map</button>
+      </div>
+
+  <p id="mapStatus" role="status" aria-live="polite"></p>
+
+  <div data-view="loading" class="loadingState">
+    <div class="loadingSpinner"></div>
+    <p>Finding churches...</p>
+  </div>
+
+  <div data-view="success" hidden>
+
+    <div class="mapLayout">
+      <div id="churchList" class="churchList"></div>
+      <div id="mapCanvas" class="mapCanvas"></div>
+    </div>
+
+  </div>
+
+  <div data-view="error" class="errorState" hidden>
+    <p>We could not load the church directory.</p>
+
+    <button id="retryMapBtn" class="ctaButton" type="button">
+      Try Again
+    </button>
+  </div>
+
+  <div data-view="empty" class="emptyState" hidden>
+    <p>No churches were found in this area.</p>
+  </div>
+
+</section>
+    <section id="eventSection" class="eventSection">
+      <h2>Upcoming Gatherings</h2>
+
+      <p>
+        Browse through upcoming events and find a place to connect.
+        Whether you are looking for a youth meetup, a worship night,
+        or a community outreach program, there is always a seat for you.
+      </p>
+
+      <div class="sectionControls">
+        <label for="eventFilter">Filter Events</label>
+
+        <select id="eventFilter">
+          <option value="all">All Events</option>
+          <option value="worship">Worship</option>
+          <option value="bibleStudy">Bible Study</option>
+          <option value="youth">Youth</option>
+          <option value="outreach">Community Outreach</option>
+        </select>
+      </div>
+
+      <div id="eventGrid" class="eventGrid"></div>
+
+      <p id="eventStatus" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="mediaSection" class="mediaSection" data-state="loading">
+      <h2>Christian Media and Inspiration</h2>
+
+      <p>
+        Feed your spirit with uplifting content. Discover Christian music,
+        sermons, interviews, and recorded gospel events curated just for you.
+      </p>
+
+      <div class="sectionControls">
+        <label for="mediaFilter">Explore Media</label>
+
+        <select id="mediaFilter">
+          <option value="Christian worship music">Worship Music</option>
+          <option value="Christian sermons">Sermons</option>
+          <option value="Christian podcasts">Podcasts</option>
+          <option value="Bible study">Bible Study</option>
+          <option value="South African gospel music">South African Gospel</option>
+        </select>
+
+        <button id="refreshMediaBtn" class="ctaButton" type="button">
+          Refresh Media
+        </button>
+      </div>
+
+      <p id="mediaStatus" role="status" aria-live="polite"></p>
+
+      <div data-view="loading" class="loadingState">
+        <p>Finding something uplifting for you...</p>
+      </div>
+
+      <div data-view="success" hidden>
+        <div id="mediaGrid" class="mediaGrid"></div>
+      </div>
+
+      <div data-view="error" class="errorState" hidden>
+        <p>We couldn't load Christian media right now.</p>
+
+        <button id="retryMediaBtn" class="ctaButton" type="button">
+          Try Again
+        </button>
+
+        <div id="fallbackMediaGrid" class="mediaGrid"></div>
+      </div>
+
+      <div data-view="empty" class="emptyState" hidden>
+        <p>No videos were found. Try selecting another category.</p>
+      </div>
+    </section>
+
+    <section class="ctaSection">
+      <h2>Want to share an event or have a question?</h2>
+
+      <p>
+        We would love to hear from you! Reach out to our team to submit
+        a local event, ask for support, or just say hello.
+      </p>
+
+      <a href="../index.html#contact" class="ctaButton">
+        Get in touch
+      </a>
+    </section>
+  </main>
+
+  <footer class="mainFooter">
+    <p>The Vine | A Faith-based community and Bible-study platform.</p>
+    <p>Sisanda Gabela - Wits Digital Arts 2026</p>
+  </footer>
+
 </body>
 </html>
